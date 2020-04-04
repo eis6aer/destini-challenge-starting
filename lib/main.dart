@@ -15,6 +15,65 @@ class Destini extends StatelessWidget {
 
 //TODO: Step 9 - Create a new storyBrain object from the StoryBrain class.
 
+class LoginRoute extends StatefulWidget {
+  @override
+  _LoginRouteState createState() => _LoginRouteState();
+}
+
+class _LoginRouteState extends State<LoginRoute> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("images/bg_temp_splash.webp"),
+              fit: BoxFit.cover),
+        ),
+        child: SafeArea(
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                flex: 3,
+                  child: SizedBox()
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: TextField(
+                      decoration: InputDecoration(
+                          hintStyle: TextStyle(fontSize: 16.0, color: Colors.white),
+                          alignLabelWithHint: true,
+                          labelText: "Email",
+                          hintText: "Email"
+                      ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintStyle: TextStyle(fontSize: 16.0, color: Colors.white),
+                        alignLabelWithHint: true,
+                        labelText: "Password",
+                        hintText: "Password"
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        )
+      ),
+    );
+  }
+}
+
+
 class StoryPage extends StatefulWidget {
   _StoryPageState createState() => _StoryPageState();
 }
@@ -24,7 +83,11 @@ class _StoryPageState extends State<StoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        //TODO: Step 1 - Add background.png to this Container as a background image.
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("images/background.png"),
+              fit: BoxFit.cover),
+        ),
         padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
         constraints: BoxConstraints.expand(),
         child: SafeArea(
@@ -47,6 +110,10 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 2,
                 child: FlatButton(
                   onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginRoute()),
+                    );
                     //Choice 1 made by user.
                     //TODO: Step 18 - Call the nextStory() method from storyBrain and pass the number 1 as the choice made by the user.
                   },
